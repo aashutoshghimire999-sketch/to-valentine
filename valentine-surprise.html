@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Angel 💖 Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:radial-gradient(circle,#ff9a9e,#fad0c4);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* FLOATING EMOJI BACKGROUND */
+.floating{
+  position:fixed;
+  top:-10%;
+  font-size:28px;
+  animation:float linear infinite;
+  opacity:0.8;
+}
+
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(120vh);}
+}
+
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+  position:relative;
+  z-index:2;
+}
+
+h1{font-size:3em;}
+h2{font-size:2em;}
+
+button{
+  padding:12px 22px;
+  margin:10px;
+  font-size:1.2em;
+  border:none;
+  border-radius:14px;
+  background:#ff4f6d;
+  color:white;
+  cursor:pointer;
+}
+
+textarea{
+  width:80%;
+  height:80px;
+  border-radius:10px;
+  padding:10px;
+  font-size:1.1em;
+}
+
+.emoji-btn{
+  font-size:3em;
+  cursor:pointer;
+  margin:10px;
+}
+
+/* HEART POPUP */
+#lovePopup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+#heart{
+  font-size:130px;
+  animation:pump 0.9s infinite;
+}
+
+@keyframes pump{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.4);}
+  100%{transform:scale(1);}
+}
+
+#loveText{
+  margin-top:20px;
+  font-size:1.8em;
+  text-align:center;
+}
+
+/* NO button move */
+#noBtn{position:relative;}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING EMOJIS -->
+<script>
+const emojis=["❤️","🌹","💋"];
+for(let i=0;i<30;i++){
+  let e=document.createElement("div");
+  e.className="floating";
+  e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+"%";
+  e.style.animationDuration=5+Math.random()*8+"s";
+  e.style.fontSize=20+Math.random()*30+"px";
+  document.body.appendChild(e);
+}
+</script>
+
+<section><h1>Hi Angel 💖</h1></section>
+
+<section>
+<h2>Which do you like more?</h2>
+<button onclick="showLove()">Chocolates 🍫</button>
+<button onclick="showLove()">Flowers 🌹</button>
+</section>
+
+<section>
+<h2>Your favorite memory of us 💌</h2>
+<textarea></textarea>
+</section>
+
+<section>
+<h2>Pick an emoji 😍</h2>
+<span class="emoji-btn" onclick="showLove()">❤️</span>
+<span class="emoji-btn" onclick="showLove()">😤</span>
+<span class="emoji-btn" onclick="showLove()">😇</span>
+<span class="emoji-btn" onclick="showLove()">💋</span>
+</section>
+
+<section>
+<h2>How much do you miss me? 😏</h2>
+<div>
+<button onclick="showLove()">1</button>
+<button onclick="showLove()">2</button>
+<button onclick="showLove()">3</button>
+<button onclick="showLove()">4</button>
+<button onclick="showLove()">5</button>
+<button onclick="showLove()">6</button>
+<button onclick="showLove()">7</button>
+<button onclick="showLove()">8</button>
+<button onclick="showLove()">9</button>
+<button onclick="showLove()">10</button>
+</div>
+</section>
+
+<section>
+<h1>Happy Valentine Angel 💖</h1>
+<p>You are my everything 😍</p>
+<button onclick="askValentine()">Click Me Babe 💘</button>
+
+<div id="valentineBox" style="display:none;">
+  <h2>Will You Be My Valentine? 💋</h2>
+  <button onclick="showLove()">YES 😍</button>
+  <button id="noBtn">NO 🙃</button>
+</div>
+</section>
+
+<div id="lovePopup">
+  <div id="heart">❤️</div>
+  <div id="loveText"></div>
+</div>
+
+<script>
+const messages=[
+"Hehehe Babe 🌹",
+"Huhuhu Darling 😭",
+"Thankyou So Much Mayalu 😛",
+"I Love You Babe 💋",
+"I Miss You So Much 🫣",
+"I Will Bite You 🤪",
+"Take Care Ba Byeeeeeeeee 🌹💋"
+];
+
+let i=0;
+function showLove(){
+  lovePopup.style.display="flex";
+  loveText.innerText=messages[i];
+  i=(i+1)%messages.length;
+  setTimeout(()=>lovePopup.style.display="none",2000);
+}
+
+function askValentine(){
+  document.getElementById("valentineBox").style.display="block";
+}
+
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.left=Math.random()*200-100+"px";
+  noBtn.style.top=Math.random()*200-100+"px";
+});
+</script>
+
+</body>
+</html>
